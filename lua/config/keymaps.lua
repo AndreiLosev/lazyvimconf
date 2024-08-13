@@ -24,3 +24,7 @@ end, { desc = "Breakpoints window" })
 vim.keymap.set("n", "<leader>dS", function()
   require("dapui").float_element("stacks")
 end, { desc = "Stacks window" })
+
+vim.keymap.set("n", "<leader>fa", function()
+  require("telescope").extensions.live_grep_args.live_grep_args()
+end, { desc = "Text With rg args" })

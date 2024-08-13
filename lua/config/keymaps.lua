@@ -16,3 +16,11 @@ vim.keymap.set("n", "<leader>ac", function()
   GetPhpClassName()
 end, { desc = "Inser class" })
 vim.keymap.set("n", "<leader>aj", "<cmd> :%!jq  <cr>", { desc = "json formated" })
+
+vim.keymap.set("n", "<leader>df", function()
+  require("dapui").float_element("breakpoints")
+end, { desc = "Breakpoints window" })
+
+vim.keymap.set("n", "<leader>dS", function()
+  require("dapui").float_element("stacks")
+end, { desc = "Stacks window" })

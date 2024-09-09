@@ -4,7 +4,7 @@
 
 local group = vim.api.nvim_create_augroup("myGroup", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = { "*.js", "*.jsx" },
+  pattern = { "*.js", "*.jsx", "*.json" },
   group = "myGroup",
   callback = function(params)
     vim.opt.tabstop = 2

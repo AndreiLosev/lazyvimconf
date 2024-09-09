@@ -1,5 +1,4 @@
 return {
-  -- Install Flutter support with snippets
   "akinsho/flutter-tools.nvim",
   dependencies = {
     "nvim-lua/plenary.nvim",
@@ -28,7 +27,6 @@ return {
       },
       dev_log = {
         enabled = false,
-        -- open_cmd = "tabedit", -- command to use to open the log buffer
       },
     })
   end,

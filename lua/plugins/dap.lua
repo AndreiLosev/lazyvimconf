@@ -38,6 +38,16 @@ return {
   },
 
   config = function()
+    -- INFO: need ovveride mason dart-debug-addapter
+    -- local dap = require("dap")
+    -- dap.adapters.dart = function(cb, config)
+    --   cb({
+    --     type = "executable",
+    --     command = config.command,
+    --     args = { "debug_adapter" },
+    --   })
+    -- end
+
     -- load mason-nvim-dap here, after all adapters have been setup
     if LazyVim.has("mason-nvim-dap.nvim") then
       require("mason-nvim-dap").setup(LazyVim.opts("mason-nvim-dap.nvim"))
@@ -61,8 +71,8 @@ return {
     end
 
     -- Extends dap.configurations with entries read from .vscode/launch.json
-    if vim.fn.filereadable(".vscode/launch.json") then
-      vscode.load_launchjs()
-    end
+    -- if vim.fn.filereadable(".vscode/launch.json") then
+    --   vscode.load_launchjs()
+    -- end
   end,
 }

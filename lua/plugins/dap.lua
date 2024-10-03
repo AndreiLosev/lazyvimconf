@@ -39,14 +39,14 @@ return {
 
   config = function()
     -- INFO: need ovveride mason dart-debug-addapter
-    -- local dap = require("dap")
-    -- dap.adapters.dart = function(cb, config)
-    --   cb({
-    --     type = "executable",
-    --     command = config.command,
-    --     args = { "debug_adapter" },
-    --   })
-    -- end
+    local dap = require("dap")
+    dap.adapters.dart = function(cb, config)
+      cb({
+        type = "executable",
+        command = config.command,
+        args = { "debug_adapter" },
+      })
+    end
 
     -- load mason-nvim-dap here, after all adapters have been setup
     if LazyVim.has("mason-nvim-dap.nvim") then

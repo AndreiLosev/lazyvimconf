@@ -8,6 +8,7 @@ local scandir = function(directory)
       return directory .. "/" .. filename
     end
   end
+
   pfile:close()
 end
 
@@ -16,6 +17,21 @@ local read_all = function(file)
   local content = f:read("*all")
   f:close()
   return content
+end
+
+local get_composer_json_path = function(cwd)
+  local composer_json_path = nil
+  for i, value in ipairs({ "", "/src", "/web" }) do
+    composer_json_path = scandir(cwd .. value)
+
+    if composer_json_path ~= nil then
+      return composer_json_path, value .. "/"
+    end
+  end
+
+  if composer_json_path == nil then
+    error("composer.json not found 404")
+  end
 end
 
 local inser_text = function(text)
@@ -44,10 +60,8 @@ local get_php_full_class_name = function()
   local file = vim.api.nvim_buf_get_name(0)
   local cwd_len = cwd:len()
   local file_from_path = file:sub(cwd_len + 1)
-  local composer_json_path = scandir(cwd)
-  if composer_json_path == nil then
-    return "composer.json not found 404"
-  end
+
+  local composer_json_path, prefix = get_composer_json_path(cwd)
   local composer_json_as_string = read_all(composer_json_path)
   local composer_object = vim.json.decode(composer_json_as_string)
   local autoload = composer_object["autoload"]
@@ -58,9 +72,12 @@ local get_php_full_class_name = function()
   for key, value in pairs(psr4) do
     a_key = key
     a_value = value
+    if string.match(file_from_path, a_value) then
+      break
+    end
   end
-
-  local full_name = file_from_path:gsub(a_value, a_key):gsub("/", "\\"):gsub(".php", ""):sub(2)
+  local full_name_rep = file_from_path:gsub(prefix .. a_value, a_key)
+  local full_name = full_name_rep:gsub("/", "\\"):gsub(".php", "")
 
   return full_name
 end

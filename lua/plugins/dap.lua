@@ -48,6 +48,47 @@ return {
       })
     end
 
+    dap.configurations.php = {
+      {
+        name = "spurIt-php",
+        type = "php",
+        request = "launch",
+        port = 9003,
+        pathMappings = {
+          ["/var/www/html/web"] = "${workspaceFolder}",
+        },
+      },
+      {
+        name = "fulfilvent",
+        type = "php",
+        request = "launch",
+        port = 9003,
+        pathMappings = {
+          ["/var/www"] = "/home/andrei/documents/spurit/shopify-fulfilment-app",
+        },
+      },
+      {
+        name = "prodaction-apps",
+        type = "php",
+        request = "launch",
+        port = 9003,
+        pathMappings = {
+          ["/var/www/app"] = "/home/andrei/documents/spurit/back-in-stock-alerts-2/src",
+        },
+      },
+      {
+        name = "run script",
+        type = "php",
+        request = "launch",
+        program = "${file}",
+        cwd = "${fileDirname}",
+        port = 9003,
+        runtimeArgs = {
+          "-dxdebug.start_with_request=yes",
+        },
+      },
+    }
+
     -- load mason-nvim-dap here, after all adapters have been setup
     if LazyVim.has("mason-nvim-dap.nvim") then
       require("mason-nvim-dap").setup(LazyVim.opts("mason-nvim-dap.nvim"))

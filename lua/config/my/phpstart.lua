@@ -21,7 +21,7 @@ end
 
 local get_composer_json_path = function(cwd)
   local composer_json_path = nil
-  for i, value in ipairs({ "", "/src", "/web" }) do
+  for i, value in ipairs({ "", "/src", "/web", "/www" }) do
     composer_json_path = scandir(cwd .. value)
 
     if composer_json_path ~= nil then

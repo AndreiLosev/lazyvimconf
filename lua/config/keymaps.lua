@@ -15,7 +15,10 @@ end, { desc = "Insert namesapace" })
 vim.keymap.set("n", "<leader>ac", function()
   GetPhpClassName()
 end, { desc = "Inser class" })
+
 vim.keymap.set("n", "<leader>aj", "<cmd> :%!jq  <cr>", { desc = "json formated" })
+
+vim.keymap.set("n", "<leader>ai", "<cmd> :CodeCompanionActions  <cr>", { desc = "codecompanion" })
 
 vim.keymap.set("n", "<leader>df", function()
   require("dapui").float_element("breakpoints")

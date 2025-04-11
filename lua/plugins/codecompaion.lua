@@ -22,11 +22,6 @@ return {
     },
     deepseek = function()
       return require("codecompanion.adapters").extend("deepseek", {
-        schema = {
-          model = {
-            default = "deepseek-chat",
-          },
-        },
         env = {
           api_key = "sk-9966398addce45d09048c9e34204394a",
         },

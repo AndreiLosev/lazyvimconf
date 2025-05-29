@@ -31,3 +31,5 @@ end, { desc = "Stacks window" })
 vim.keymap.set("n", "<leader>fa", function()
   require("telescope").extensions.live_grep_args.live_grep_args()
 end, { desc = "Text With rg args" })
+
+vim.keymap.set("n", "<leader>gt", "<cmd> :BlamerToggle <cr>", { desc = "toggle line blame" })

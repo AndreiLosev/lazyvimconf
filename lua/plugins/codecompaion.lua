@@ -11,7 +11,7 @@ return {
         return require("codecompanion.adapters").extend("ollama", {
           schema = {
             model = {
-              default = "deepseek-r1",
+              default = "deepseek-coder-v2:latest",
             },
             num_ctx = {
               default = 20000,
@@ -29,13 +29,13 @@ return {
     end,
     strategies = {
       chat = {
-        adapter = "deepseek",
+        adapter = "ollama",
       },
       inline = {
-        adapter = "deepseek",
+        adapter = "ollama",
       },
       cmd = {
-        adapter = "deepseek",
+        adapter = "ollama",
       },
     },
   },

@@ -38,7 +38,7 @@ return {
   },
 
   config = function()
-    -- INFO: need ovveride mason dart-debug-addapter
+    -- INFO: need ovveride mason dart-debug-addapter /home/andrei/.local/share/nvim/lazy/mason-nvim-dap.nvim/lua/mason-nvim-dap/mappings/adapters/dart.lua
     local dap = require("dap")
     dap.adapters.dart = function(cb, config)
       cb({
@@ -47,6 +47,18 @@ return {
         args = { "debug_adapter" },
       })
     end
+
+    dap.configurations.dart = {
+      {
+        command = "dart",
+        type = "dart",
+        request = "launch",
+        name = "Launch Dart Program",
+        program = "${file}",
+        cwd = "${workspaceFolder}",
+        args = { "--help" },
+      },
+    }
 
     dap.configurations.php = {
       {

@@ -23,14 +23,14 @@ return {
     deepseek = function()
       return require("codecompanion.adapters").extend("deepseek", {
         env = {
-          api_key = "sk-1728ffa76f32483596d5b59b846fd223",
+          api_key = "",
         },
       })
     end,
     mistral = function()
       return require("codecompanion.adapters").extend("mistral", {
         env = {
-          api_key = "wdkoIAqlEsl7tG5mTvcy2cnHhZZC2j8V",
+          api_key = "",
         },
       })
     end,
